@@ -467,6 +467,152 @@
     font-weight: 600;
   }
 
+  /* ---------- SCORING METHODOLOGY ---------- */
+  .scoring-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .rule-card{
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 20px;
+  }
+  .rule-event-num{
+    font-family: 'Anton', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .rule-card h3{
+    margin: 0 0 14px;
+    font-size: 19px;
+    color: var(--cream);
+  }
+  .rule-list{
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .rule-list li{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--slate);
+    border-top: 1px dashed var(--line);
+    padding-top: 10px;
+  }
+  .rule-list li:first-child{ border-top: none; padding-top: 0; }
+  .rule-list li b{ color: var(--cream); font-weight: 600; }
+  .rule-points{
+    color: var(--gold-bright);
+    font-weight: 700;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  /* ---------- FINAL RESULTS ---------- */
+  .champion-banner{
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    padding: 32px 24px;
+    border-radius: 18px;
+    background: linear-gradient(160deg, rgba(217,166,62,0.18), rgba(217,166,62,0.03));
+    border: 1px solid var(--gold);
+    box-shadow: 0 20px 45px rgba(217,166,62,0.12);
+  }
+  .champion-trophy{ font-size: 42px; margin-bottom: 8px; }
+  .champion-eyebrow{
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .champion-name{
+    font-size: clamp(30px, 6vw, 48px);
+    margin: 0 0 8px;
+    color: var(--gold-bright);
+  }
+  .champion-sub{
+    color: var(--cream);
+    font-size: 14px;
+    opacity: 0.85;
+    margin: 0;
+    line-height: 1.6;
+  }
+  .results-table-wrap{
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+  }
+  table.results-table{
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    font-size: 13px;
+  }
+  table.results-table th, table.results-table td{
+    padding: 14px 16px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  table.results-table th{
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--gold);
+    border-bottom: 1px solid var(--line);
+  }
+  table.results-table th:first-child, table.results-table td:first-child{
+    text-align: left;
+    position: sticky;
+    left: 0;
+    background: var(--panel);
+  }
+  table.results-table td{
+    color: var(--slate);
+    border-bottom: 1px dashed rgba(217,166,62,0.12);
+  }
+  table.results-table td.team-name{
+    color: var(--cream);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  table.results-table td.total-col{
+    color: var(--gold-bright);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  table.results-table tr.winner-row td{
+    background: rgba(217,166,62,0.1);
+  }
+  table.results-table tr.winner-row td.team-name::after{
+    content: ' \1F3C6';
+  }
+  .tiebreak-note{
+    text-align: center;
+    color: var(--slate);
+    font-size: 12px;
+    margin-top: 16px;
+    letter-spacing: 0.03em;
+  }
+  @media (max-width: 720px){
+    .champion-banner{ padding: 24px 16px; }
+  }
+
   footer{
     text-align:center;
     padding: 30px 20px 50px;
@@ -559,6 +705,8 @@
   <button class="tab-btn active" data-tab="home">Opening<br>Ceremony</button>
   <button class="tab-btn" data-tab="participants">Participants</button>
   <button class="tab-btn" data-tab="teams">Teams</button>
+  <button class="tab-btn" data-tab="scoring">Scoring</button>
+  <button class="tab-btn" data-tab="results">Final Results</button>
 </nav>
 
 <section class="section active" id="home">
@@ -585,6 +733,125 @@
     <p>4 Captains &middot; Rosters Locking In Soon</p>
   </div>
   <div class="teams-grid" id="teamsGrid"></div>
+</section>
+
+<section class="section" id="scoring">
+  <div class="section-head">
+    <h2>How Points Were Earned</h2>
+    <p>Official Scoring Methodology &middot; 7 Scored Events</p>
+  </div>
+  <div class="scoring-grid">
+    <div class="rule-card">
+      <div class="rule-event-num">Event 1</div>
+      <h3>Pickleball</h3>
+      <ul class="rule-list">
+        <li><b>Win</b><span class="rule-points">+2 pts</span></li>
+        <li><b>Loss</b><span class="rule-points">0 pts</span></li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <div class="rule-event-num">Event 2</div>
+      <h3>Golf</h3>
+      <ul class="rule-list">
+        <li><b>Win</b><span class="rule-points">+2 pts</span></li>
+        <li><b>Tie</b><span class="rule-points">+1 pt each</span></li>
+        <li><b>Loss</b><span class="rule-points">0 pts</span></li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <div class="rule-event-num">Event 3A</div>
+      <h3>Championship Pickleball</h3>
+      <ul class="rule-list">
+        <li><b>Win</b><span class="rule-points">+2 pts</span></li>
+        <li><b>Loss</b><span class="rule-points">&minus;1 pt</span></li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <div class="rule-event-num">Event 3B</div>
+      <h3>Loser&rsquo;s Bracket &mdash; Stack Cup</h3>
+      <ul class="rule-list">
+        <li><b>Win</b><span class="rule-points">+1 pt</span></li>
+        <li><b>Loss</b><span class="rule-points">Bitch Cup</span></li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <div class="rule-event-num">Event 4</div>
+      <h3>Flip Cup</h3>
+      <ul class="rule-list">
+        <li><b>Per Game Win</b><span class="rule-points">+1 pt</span></li>
+        <li><b>Max (3 Games)</b><span class="rule-points">3 pts</span></li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <div class="rule-event-num">Event 6</div>
+      <h3>Civil War I</h3>
+      <ul class="rule-list">
+        <li><b>Winning Teams (x2)</b><span class="rule-points">+3 pts each</span></li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <div class="rule-event-num">Event 7</div>
+      <h3>Civil War II</h3>
+      <ul class="rule-list">
+        <li><b>Winning Teams (x2)</b><span class="rule-points">+3 pts each</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="section-head">
+    <h2>Final Results</h2>
+    <p>Official Standings &middot; The Joelympics</p>
+  </div>
+
+  <div class="champion-banner">
+    <div class="champion-trophy">&#127942;</div>
+    <div class="champion-eyebrow">Joelympics Champion</div>
+    <h3 class="champion-name">Martin &ldquo;De Lechon&rdquo;</h3>
+    <p class="champion-sub">Crowned after a historic 4-way tie at 6 points each &mdash; decided by sudden-death golf tiebreaker.</p>
+  </div>
+
+  <div class="results-table-wrap">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Pickleball</th>
+          <th>Golf</th>
+          <th>Champ. Pickleball</th>
+          <th>Stack Cup</th>
+          <th>Flip Cup</th>
+          <th>Civil War I</th>
+          <th>Civil War II</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="winner-row">
+          <td class="team-name">Martin</td>
+          <td>2</td><td>0</td><td>2</td><td>0</td><td>2</td><td>0</td><td>0</td>
+          <td class="total-col">6</td>
+        </tr>
+        <tr>
+          <td class="team-name">RJ</td>
+          <td>0</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td>
+          <td class="total-col">6</td>
+        </tr>
+        <tr>
+          <td class="team-name">Josh</td>
+          <td>2</td><td>2</td><td>&minus;1</td><td>0</td><td>1</td><td>2</td><td>0</td>
+          <td class="total-col">6</td>
+        </tr>
+        <tr>
+          <td class="team-name">Carlos</td>
+          <td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td>
+          <td class="total-col">6</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tiebreak-note">All four captains finished regulation tied at 6 points. Martin won the sudden-death golf tiebreaker to claim the title.</p>
 </section>
 
 <footer>Est. by the Joelympics Committee &middot; Marcus Aurelius &amp; Teenzy, Officiating</footer>
